@@ -28,7 +28,24 @@ def getAllInverseOf(m: int):
             u = each ** (euler - 1)
             answ[each] = u % m
 
-    # retur dictionary [K:V],
+    # return dictionary [K:V],
+    #   K - a
+    #   V - u
+    return answ
+
+
+def getInverseOf(m: int, a: int):
+    answ = {}
+    subtract = getSubtractClassFor(m)
+
+    # SKIP 1?
+    for each in subtract:
+        if a == each:
+            euler = getEuler(m)[0]
+            u = each ** (euler - 1)
+            answ[each] = u % m
+
+    # return dictionary [K:V],
     #   K - a
     #   V - u
     return answ
@@ -37,3 +54,7 @@ def getAllInverseOf(m: int):
 if __name__ == '__main__':
     print(f'U(7):\n{("".join(getPrettyStr(getAllInverseOf(7))))}')
     print(f'U(9):\n{("".join(getPrettyStr(getAllInverseOf(9))))}')
+    print(f'U(5):\n{("".join(getPrettyStr(getAllInverseOf(5))))}')
+
+    print(f'U(5):\n{("".join(getPrettyStr(getInverseOf(5, 3))))}')
+    print(f'U(5):\n{("".join(getPrettyStr(getInverseOf(5, 2))))}')

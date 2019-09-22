@@ -25,3 +25,4 @@ if __name__ == '__main__':
     print(f'9 = {getSubtractClassFor(9)}')
     print(f'6 = {getSubtractClassFor(6)}')
     print(f'42 = {getSubtractClassFor(42)}')
+    print(f'3 = {getSubtractClassFor(3)}')
