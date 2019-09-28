@@ -1,4 +1,4 @@
-from canonic_view import getPrimeFactors
+from canonic_view import getPrimeFactorsList
 import argparse
 
 
@@ -16,7 +16,7 @@ def getParser():
     About script:
     =========================================
     Math foundations of cryptology. Script #3.
-    Get euler decomposition
+    Get euler decomposition.
 
     Simple: 
         42= 2^1 * 3^1 * 7^1''', formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -33,7 +33,7 @@ def getParser():
 
 
 def getEuler(number: int):
-    decDict = getPrimeFactors(number)
+    decDict = getPrimeFactorsList(number)
     result = 1
     resultString = []  # contains all multiplier
 

@@ -58,6 +58,19 @@ def getHeaders(isDecompose: bool):
     return header
 
 
+def getNod(numOne, numTwo):
+    nod = numTwo
+
+    while numOne != 0 and numTwo != 0:
+        mod = int(numOne % numTwo)  # remainder of the division
+        if mod != 0:
+            nod = mod
+        numOne = numTwo
+        numTwo = mod
+
+    return nod
+
+
 def getPrintableNOD(isDecompose: bool, isPrinting: bool, numOne: int, numTwo: int):
     if numOne == numTwo:
         print(f'{numOne} equals {numTwo} -> Nod({numOne},{numTwo}) = {numOne}')

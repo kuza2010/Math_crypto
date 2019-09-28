@@ -6,7 +6,7 @@ def validate(string: str):
     value = int(string)
 
     if value <= 0:
-        raise argparse.ArgumentTypeError(f'Incorrect value: {string}')
+        raise argparse.ArgumentTypeError(f'Value must be >= 0')
 
     return value
 
@@ -16,10 +16,10 @@ def getParser():
     About script:
     =========================================
     Math foundations of cryptology. Script #2.
-    Find primary factorial given numbers.
-
+    Prime factorization.
     Simple: 
-        42= 2^1 * 3^1 * 7^1''', formatter_class=argparse.RawDescriptionHelpFormatter)
+        input: 21 
+        output: CanonicView: 21 = (3^1)*(7^1)''', formatter_class=argparse.RawDescriptionHelpFormatter)
 
     parser.add_argument('number', type=validate, nargs=1, help='- integer digit')
 
@@ -27,7 +27,7 @@ def getParser():
     return args
 
 
-def getPrimeFactors(n):
+def getPrimeFactorsList(n):
     i = 2
     primfac = []
     while i * i <= n:
@@ -43,15 +43,13 @@ def getPrimeFactors(n):
 
 
 def getPrettyStr(prim: dict):
-    resultStr = ""
     # key - number, value - degree
-    for key in prim.keys():
-        resultStr = f'{resultStr}({key}^{prim[key]})*'
-
+    factors = list(map(lambda each: f'({each}^{prim[each]})', prim.keys()))
+    resultStr = '*'.join(factors)
     return resultStr
 
 
 if __name__ == '__main__':
     argParser = getParser()
-    prim = getPrimeFactors(argParser.number[0])
-    print(f'CanonicView: {argParser.number[0]} = {getPrettyStr(prim)[:-1]}')
+    prim = getPrimeFactorsList(argParser.number[0])
+    print(f'CanonicView: {argParser.number[0]} = {getPrettyStr(prim)}')
