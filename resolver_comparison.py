@@ -1,10 +1,11 @@
 import argparse
+import math
 import re
 import inverse_element
 import nod
 
 # TODO: Regexp really funny!
-equationPattern = r'[1-9][0-9]*x=[1-9][0-9]*\(mod[1-9][0-9]*\)'
+equationPattern = r'[1-9][0-9]*x=-?[1-9][0-9]*\(mod[1-9][0-9]*\)'
 
 
 def validate(string: str):
@@ -54,11 +55,11 @@ def getParams(equation: str,
         answ.append(int(result.group(0)))
 
     # get second num: 23x=42(mod5) => 42    b
-    tmp = re.search(r'=[1-9][0-9]*\(', equation)
+    tmp = re.search(r'=-?[1-9][0-9]*\(', equation)
     if tmp is None:
         raise RuntimeError(f'Ooops... Can not find second number')
     else:
-        result = re.search(r'[1-9][0-9]*', tmp.group(0))
+        result = re.search(r'-?[1-9][0-9]*', tmp.group(0))
         answ.append(int(result.group(0)))
 
     # get the third num: 23x=42(mod5) => 5  m
@@ -78,8 +79,9 @@ def getParams(equation: str,
 def compresParam(a, b, m, printSolution: bool):
     # 74x=69(mod7) => 4x=6(mod7)
     # 21x=35(mod14) => 7x=7x(mod14)
-    if a > m and b > m:
+    if abs(a) > m:
         a = int(a % m)
+    if abs(b) > m:
         b = int(b % m)
 
     if nod.getNod(m, a) == nod.getNod(m, b):
@@ -97,6 +99,7 @@ def compresParam(a, b, m, printSolution: bool):
 def getX(a, b, m, printSolution: bool):
     one = inverse_element.getInverseOf(m, a)
     two = inverse_element.getInverseOf(m, b)
+    print(one, two)
     if printSolution:
         print(f'x={one[a] * two[b]}mod({m})')
         print(f'x={(one[a] * two[b]) % m}')

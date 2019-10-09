@@ -37,15 +37,15 @@ def getAllInverseOf(m: int):
 def getInverseOf(m: int, a: int):
     answ = {}
     subtract = getSubtractClassFor(m)
-    if a > m:
+    if abs(a) > m:
         a = a % m
 
     # SKIP 1?
     for each in subtract:
-        if a == each:
+        if a == each or (a < 0 and a + m == each):
             euler = getEuler(m)[0]
             u = each ** (euler - 1)
-            answ[each] = u % m
+            answ[a] = u % m
 
     # return dictionary [K:V],
     #   K - a
@@ -73,3 +73,4 @@ if __name__ == '__main__':
     print(f'U(5):\n{("".join(getPrettyStr(getInverseOf(5, 3))))}')
     print(f'U(5):\n{("".join(getPrettyStr(getInverseOf(5, 2))))}')
     print(f'U(7):\n{("".join(getPrettyStr(getInverseOf(7, 143))))}')
+    print(f'{get_inverse_of(13, -1)}')
