@@ -1,6 +1,6 @@
 import argparse
 import re
-import nod
+from utils import nod
 from chinese_equation import ChineseEquation
 
 equationPattern = r'x=[1-9][0-9]*\(mod[1-9][0-9]*\)'

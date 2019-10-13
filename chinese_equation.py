@@ -1,4 +1,4 @@
-import inverse_element
+from utils import inverse_element
 
 
 class ChineseEquation:

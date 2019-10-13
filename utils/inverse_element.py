@@ -1,5 +1,9 @@
-from subtract_class import getSubtractClassFor
-from euler import getEuler
+if __name__ == 'main':
+    from subtract_class import getSubtractClassFor
+    from euler import getEuler
+else:
+    from utils.subtract_class import getSubtractClassFor
+    from utils.euler import getEuler
 
 
 # By euler theorem`s

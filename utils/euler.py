@@ -1,4 +1,7 @@
-from canonic_view import getPrimeFactorsList
+if __name__ == 'main':
+    from canonic_view import getPrimeFactorsList
+else:
+    from utils.canonic_view import getPrimeFactorsList
 import argparse
 
 
@@ -39,12 +42,12 @@ def getEuler(number: int):
 
     # key - number, value - degree
     for key in decDict.keys():
-        numOne = key ** decDict[key]        # num^x
+        numOne = key ** decDict[key]  # num^x
         numTwo = key ** (decDict[key] - 1)  # num^(x-1)
-        tmpResult = numOne - numTwo         # num^x - num^(x-1)
+        tmpResult = numOne - numTwo  # num^x - num^(x-1)
 
         resultString.append(f'({key}^{decDict[key]}-{key}^{(decDict[key] - 1)}) *')
-        result = result*tmpResult
+        result = result * tmpResult
 
     # return answer, decompose list
     return result, resultString
@@ -64,4 +67,3 @@ if __name__ == '__main__':
         print(f'Euler: F({num}) = {getPrettyStr(answer[0], answer[1])}')
     else:
         print(f'Euler: F({num}) = {answer[0]}')
-

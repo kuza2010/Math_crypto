@@ -1,8 +1,6 @@
 import argparse
-import math
 import re
-import inverse_element
-import nod
+from utils import nod, inverse_element
 
 # TODO: Regexp really funny!
 equationPattern = r'[1-9][0-9]*x=-?[1-9][0-9]*\(mod[1-9][0-9]*\)'
@@ -166,9 +164,9 @@ def isPrimeNumber(numOne, numTwo, printSolution: bool = False):
     return nod_am == 1
 
 
-# This func return the answer for the equation.
-# Parameter:
-#   strEquation - the equation
+''' This func return the answer for the equation.
+    Parameter:
+    strEquation - the equation'''
 def getAnswerFromString(strEquation: str, printSolution: bool):
     param = getParams(strEquation, printSolution)
 

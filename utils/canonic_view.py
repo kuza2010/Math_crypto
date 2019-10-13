@@ -16,7 +16,7 @@ def getParser():
     About script:
     =========================================
     Math foundations of cryptology. Script #2.
-    Prime factorization.
+    Prime factorization. Разложение простого числа на простые множители.
     Simple: 
         input: 21 
         output: CanonicView: 21 = (3^1)*(7^1)''', formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -50,6 +50,9 @@ def getPrettyStr(prim: dict):
 
 
 if __name__ == '__main__':
-    argParser = getParser()
-    prim = getPrimeFactorsList(argParser.number[0])
-    print(f'CanonicView: {argParser.number[0]} = {getPrettyStr(prim)}')
+    print(f'selfcheck......')
+    test_data = [21, 13, 111, 283]
+    for each in test_data:
+        prim = getPrimeFactorsList(each)
+        print(f'CanonicView: {each} = {getPrettyStr(prim)}')
+    print(f'selfcheck completed')
