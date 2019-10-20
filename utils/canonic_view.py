@@ -1,4 +1,5 @@
 import argparse
+import vilson
 from collections import Counter
 
 
@@ -27,7 +28,16 @@ def getParser():
     return args
 
 
-def getPrimeFactorsList(n):
+def to_list_prime(prime_dict: dict):
+    primes = []
+    for key in prime_dict.keys():
+        for value in range(prime_dict[key]):  # num of entries
+            primes.append(key)
+
+    return primes
+
+
+def prime_factors_list(n):
     i = 2
     primfac = []
     while i * i <= n:
@@ -42,7 +52,14 @@ def getPrimeFactorsList(n):
     return Counter(primfac)
 
 
-def getPrettyStr(prim: dict):
+def get_all_prime(m: int):
+    if vilson.isPrimary(m):
+        return range(m)
+    else:
+        return vilson.get_all_primary(m, True)
+
+
+def pretty_str(prim: dict):
     # key - number, value - degree
     factors = list(map(lambda each: f'({each}^{prim[each]})', prim.keys()))
     resultStr = '*'.join(factors)
@@ -53,6 +70,6 @@ if __name__ == '__main__':
     print(f'selfcheck......')
     test_data = [21, 13, 111, 283]
     for each in test_data:
-        prim = getPrimeFactorsList(each)
-        print(f'CanonicView: {each} = {getPrettyStr(prim)}')
+        prim = prime_factors_list(each)
+        print(f'CanonicView: {each} = {pretty_str(prim)}')
     print(f'selfcheck completed')

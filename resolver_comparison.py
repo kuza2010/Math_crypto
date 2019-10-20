@@ -26,7 +26,7 @@ def getParser():
         output: 3x=1(mod5) => x = 2+5k, k ∈ Z''', formatter_class=argparse.RawDescriptionHelpFormatter)
 
     parser.add_argument('equation', type=validate, nargs=1,
-                        help='- equation. You can input the equation without space.')
+                        help='- equation. You should input the equation without space.')
     parser.add_argument('-s', '--solution', type=bool, const=True, default=False, nargs='?',
                         help='- print solution')
     args = parser.parse_args()
@@ -82,10 +82,10 @@ def compresParam(a, b, m, printSolution: bool):
     if abs(b) > m:
         b = int(b % m)
 
-    if nod.getNod(m, a) == nod.getNod(m, b):
-        tmp_m = int(m / nod.getNod(m, a))
-        a = int(a / nod.getNod(m, a))
-        b = int(b / nod.getNod(m, b))
+    if nod.get_nod(m, a) == nod.get_nod(m, b):
+        tmp_m = int(m / nod.get_nod(m, a))
+        a = int(a / nod.get_nod(m, a))
+        b = int(b / nod.get_nod(m, b))
         m = tmp_m
 
     if printSolution:
@@ -158,7 +158,7 @@ def getAnswerForNoPrime(params: [], printSolution: bool):
 
 
 def isPrimeNumber(numOne, numTwo, printSolution: bool = False):
-    nod_am = nod.getNod(numOne, numTwo)
+    nod_am = nod.get_nod(numOne, numTwo)
     if printSolution:
         print(f'nod({numOne},{numTwo}) = {nod_am}')
     return nod_am == 1

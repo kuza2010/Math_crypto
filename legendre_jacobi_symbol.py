@@ -78,10 +78,10 @@ def calculateLegendre(a, p):
 def calculateJacobi(a, m):
     if m % 2 == 0:
         raise ArithmeticError(f'input: {m} is even number!')
-    if nod.getNod(a, m) != 1:
-        raise ArithmeticError(f'nod({a},{m})={nod.getNod(a, m)}')
+    if nod.get_nod(a, m) != 1:
+        raise ArithmeticError(f'nod({a},{m})={nod.get_nod(a, m)}')
 
-    canonic = list(canonic_view.getPrimeFactorsList(m).keys())
+    canonic = list(canonic_view.prime_factors_list(m).keys())
     legendre = [calculateLegendre(a, each) for each in canonic]
     res = 1
     for each in legendre:
@@ -100,9 +100,9 @@ def getParser():
     =========================================
     Math foundations of cryptology. Script #12.1.
     Нахождение символа Лежандра, Якоби.
-
     Пример:
         Ввод: 126 53 --legendre
+        Ввод: 125 53 --jacobi
         Вывод: -1''', formatter_class=argparse.RawDescriptionHelpFormatter)
 
     parser.add_argument('number', type=validate, nargs=2,
@@ -110,7 +110,7 @@ def getParser():
     parser.add_argument('-l', '--legendre', type=bool, const=True, default=False, nargs='?',
                         help='- find legendre symbol')
     parser.add_argument('-j', '--jacobi', type=bool, const=True, default=False, nargs='?',
-                        help='- find jacobi symbol')
+                        help='- find jacobi or legendre symbol')
     args = parser.parse_args()
     return args
 

@@ -1,7 +1,7 @@
 if __name__ == 'main':
     from canonic_view import getPrimeFactorsList
 else:
-    from utils.canonic_view import getPrimeFactorsList
+    from utils.canonic_view import prime_factors_list
 import argparse
 
 
@@ -35,8 +35,8 @@ def getParser():
     return args
 
 
-def getEuler(number: int):
-    decDict = getPrimeFactorsList(number)
+def euler(number: int):
+    decDict = prime_factors_list(number)
     result = 1
     resultString = []  # contains all multiplier
 
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     argParser = getParser()
 
     num = argParser.number[0]
-    answer = getEuler(num)
+    answer = euler(num)
 
     if argParser.print_decomposition:
         print(f'Euler: F({num}) = {getPrettyStr(answer[0], answer[1])}')

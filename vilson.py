@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 MAX_PRIMARY = 99999
 MIN_PRIMARY = 1
 
@@ -20,6 +22,20 @@ def isPrimary(number: int):
     if factor_by_div(number) % number == number - 1:
         return True
     return False
+
+
+def get_all_primary(max_num: int, include_null: bool):
+    primes = []
+    counter = 1
+    if include_null:
+        primes.append(0)
+
+    while counter < max_num - 1:
+        if isPrimary(counter):
+            primes.append(counter)
+        counter += 1
+
+    return primes
 
 
 if __name__ == '__main__':

@@ -58,15 +58,15 @@ def getHeaders(isDecompose: bool):
     return header
 
 
-def getNod(numOne, numTwo):
-    nod = numTwo
+def get_nod(first, second):
+    nod = second
 
-    while numOne != 0 and numTwo != 0:
-        mod = int(numOne % numTwo)  # remainder of the division
+    while first != 0 and second != 0:
+        mod = int(first % second)  # remainder of the division
         if mod != 0:
             nod = mod
-        numOne = numTwo
-        numTwo = mod
+        first = second
+        second = mod
 
     return nod
 

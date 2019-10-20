@@ -3,7 +3,7 @@ if __name__ == 'main':
     from euler import getEuler
 else:
     from utils.subtract_class import getSubtractClassFor
-    from utils.euler import getEuler
+    from utils.euler import euler
 
 
 # By euler theorem`s
@@ -28,7 +28,7 @@ def getAllInverseOf(m: int):
         if each == 1:
             answ[1] = 1
         else:
-            euler = getEuler(m)[0]
+            euler = euler(m)[0]
             u = each ** (euler - 1)
             answ[each] = u % m
 
@@ -47,7 +47,7 @@ def getInverseOf(m: int, a: int):
     # SKIP 1?
     for each in subtract:
         if a == each or (a < 0 and a + m == each):
-            euler = getEuler(m)[0]
+            euler = euler(m)[0]
             u = each ** (euler - 1)
             answ[a] = u % m
 
@@ -65,7 +65,7 @@ def get_inverse_of(m: int, a: int):
     # SKIP 1?
     for each in subtract:
         if a == each:
-            euler = getEuler(m)[0]
+            euler = euler(m)[0]
             u = each ** (euler - 1)
             return u % m
 

@@ -2,6 +2,7 @@ import argparse
 from utils import euler
 from utils import nod
 from utils import canonic_view
+import itertools
 
 
 def validate(string: str):
@@ -11,7 +12,7 @@ def validate(string: str):
     return value
 
 
-def getParser():
+def get_parser():
     parser = argparse.ArgumentParser(description='''
     About script:
     =========================================
@@ -21,7 +22,7 @@ def getParser():
 
     Пример:
         Ввод: 11 
-        Вывод: первообразный корень mod(11) => a=[2, 6, 7, 8]''', formatter_class=argparse.RawDescriptionHelpFormatter)
+        Вывод: первообразный корень по модулю 11: a = 2''', formatter_class=argparse.RawDescriptionHelpFormatter)
 
     parser.add_argument('module', type=validate, nargs=1,
                         help='- module, positive number.')
@@ -31,31 +32,56 @@ def getParser():
     return args
 
 
-def findFirstRoot(m: int, print_solution: bool):
-    eul = euler.getEuler(m)
-    canonic_number = canonic_view.getPrimeFactorsList(eul[0]).keys()
-    if print_solution:
-        print(f'Euler: φ({m}) = {eul[0]}')
-        print(f'Canon view: {eul[0]} = {canonic_view.getPrettyStr(canonic_view.getPrimeFactorsList(eul[0]))}')
+def get_all_degree(numbers: []):
+    degrees = set(numbers)
 
-    roots = []
+    if len(numbers) > 2:
+        for length in range(2, len(numbers)):
+            for combination in itertools.combinations(numbers, length):
+                degree = 1
+                for each in combination:
+                    degree *= each
+                degrees.add(degree)
+
+    return list(degrees)
+
+
+def find_root_and_system(m: int, print_solution: bool):
+    eul = euler.euler(m)[0]
+    canonic_number = canonic_view.to_list_prime(canonic_view.prime_factors_list(eul))
+    if print_solution:
+        print(f'Euler: φ({m}) = {eul}')
+        print(f'Canon view: {eul} = {canonic_view.pretty_str(canonic_view.prime_factors_list(eul))}')
+
     a = 2
-    while a < eul[0]:
+    while a < eul:
         isRoot = True
         for each in canonic_number:
             if isRoot:
-                degree = int(eul[0] / each)
+                degree = int(eul / each)
                 if (a ** degree) % m == 1:
                     isRoot = False
             else:
                 break
-        if isRoot and nod.getNod(a, m) == 1:
-            roots.append(a)
+        if isRoot and nod.get_nod(a, m) == 1:
+            system = get_system(a, canonic_view.get_all_prime(m), m)
+            return a, system
         a += 1
+    return -1, []
 
-    return roots
+
+def get_system(a: int, degrees: [], m: int):
+    system = []
+    for degree in degrees:
+        system.append(f'{a}^{degree}={int(a ** degree % m)}')
+    return system
 
 
 if __name__ == '__main__':
-    argParser = getParser()
-    print(f'a = {findFirstRoot(argParser.module[0], argParser.solution)}')
+    args = get_parser()
+    root = find_root_and_system(args.module[0], args.solution)
+    if root[0] >= 2:
+        print(f'Первообразный корень по модулю {args.module[0]}: a = {root[0]}')
+        print(f'Приведенной системы вычетов: {", ".join(root[1])}')
+    else:
+        print(f'Первообразных корней по модулю {args.module[0]} не найдено')
