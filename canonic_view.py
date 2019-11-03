@@ -16,9 +16,9 @@ def getParser():
     parser = argparse.ArgumentParser(description='''
     About script:
     =========================================
-    Math foundations of cryptology. Script #2.
-    Prime factorization. Разложение простого числа на простые множители.
-    Simple: 
+    Math foundations of cryptology. Задание #4.
+    Каноническое разложение числа на простые множители.
+    Пример: 
         input: 21 
         output: CanonicView: 21 = (3^1)*(7^1)''', formatter_class=argparse.RawDescriptionHelpFormatter)
 

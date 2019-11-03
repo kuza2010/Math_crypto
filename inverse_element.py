@@ -1,9 +1,9 @@
-if __name__ == 'main':
-    from subtract_class import getSubtractClassFor
-    from euler import getEuler
-else:
-    from utils.subtract_class import getSubtractClassFor
-    from utils.euler import euler
+from subtract_class import getSubtractClassFor
+from euler import euler
+
+'''
+Задание 6. Нахождение обратного элемента в Zm
+'''
 
 
 # By euler theorem`s
@@ -28,8 +28,8 @@ def getAllInverseOf(m: int):
         if each == 1:
             answ[1] = 1
         else:
-            euler = euler(m)[0]
-            u = each ** (euler - 1)
+            tmp_euler = euler(m)[0]
+            u = each ** (tmp_euler - 1)
             answ[each] = u % m
 
     # return dictionary [K:V],
@@ -47,8 +47,8 @@ def getInverseOf(m: int, a: int):
     # SKIP 1?
     for each in subtract:
         if a == each or (a < 0 and a + m == each):
-            euler = euler(m)[0]
-            u = each ** (euler - 1)
+            tmp_euler = euler(m)[0]
+            u = each ** (tmp_euler - 1)
             answ[a] = u % m
 
     # return dictionary [K:V],
@@ -65,8 +65,8 @@ def get_inverse_of(m: int, a: int):
     # SKIP 1?
     for each in subtract:
         if a == each:
-            euler = euler(m)[0]
-            u = each ** (euler - 1)
+            tmp_euler = euler(m)[0]
+            u = each ** (tmp_euler - 1)
             return u % m
 
 

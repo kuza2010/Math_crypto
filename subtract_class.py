@@ -1,3 +1,9 @@
+'''
+Задание 6. Нахождение обратного элемента в Zm
+Это вспомогателный скрипт для inverse_element.py
+'''
+
+
 def nod(a: int, b: int):
     while a != 0 and b != 0:
         if a > b:

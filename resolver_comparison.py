@@ -1,6 +1,7 @@
 import argparse
 import re
-from utils import nod, inverse_element
+import nod
+import inverse_element
 
 # TODO: Regexp really funny!
 equationPattern = r'[1-9][0-9]*x=-?[1-9][0-9]*\(mod[1-9][0-9]*\)'
@@ -18,8 +19,8 @@ def getParser():
     parser = argparse.ArgumentParser(description='''
     About script:
     =========================================
-    Math foundations of cryptology. Script #4.
-    Simple comparison, where (a,b)=1 or (a,b)!=1 
+    Math foundations of cryptology.
+    Задание 7. Решение сравнений (для простого и составного m) 
 
     Example:
         input: "3x=1(mod5)" 

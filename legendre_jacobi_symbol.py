@@ -1,6 +1,10 @@
 import argparse
-from utils import canonic_view
-from utils import nod
+import canonic_view
+import nod
+
+'''
+Задание #12. Нахождение символа Лежандра и символа Якоби
+'''
 
 
 def isPrime(a):

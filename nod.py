@@ -19,8 +19,9 @@ def getParser():
     parser = argparse.ArgumentParser(description='''
     About script:
     =========================================
-    Math foundations of cryptology. Script #1.
-    Find NOD for two numbers.
+    Math foundations of cryptology. Задание #1,2.
+    Нахождение НОД по алгоритму Эвклида.
+    Линейное разложение НОД по расширенному алгоритму Эвклида.
     
     Simple: 
         (175,77)=7''', formatter_class=argparse.RawDescriptionHelpFormatter)

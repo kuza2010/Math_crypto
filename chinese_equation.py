@@ -1,4 +1,4 @@
-from utils import inverse_element
+import inverse_element
 
 
 class ChineseEquation:
@@ -11,7 +11,7 @@ class ChineseEquation:
         self.__m = int(m)
         self.__view = printable_view
 
-        print(f'Create Chinese equation with param: b={b}, m={m}, {printable_view}')
+        # print(f'Create Chinese equation with param: b={b}, m={m}, {printable_view}')
 
     @property
     def b(self):

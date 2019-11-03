@@ -1,6 +1,6 @@
 import argparse
 import re
-from utils import nod
+import nod
 from chinese_equation import ChineseEquation
 
 equationPattern = r'x=[1-9][0-9]*\(mod[1-9][0-9]*\)'
@@ -18,8 +18,8 @@ def get_parser():
     parser = argparse.ArgumentParser(description='''
     About script:
     =========================================
-    Math foundations of cryptology. Script #5.
-    Comparisons by chinese algorithm. 
+    Math foundations of cryptology.
+    Задание 8. Решение системы сравнений китайским алгоритмом
 
     Example:
         input: "3x=1(mod5)" 
@@ -95,7 +95,10 @@ def getAnswerFromString(str_equation: str, print_solution: bool):
     for each in param:
         X += each.y * each.M * each.b
 
-    return X % M
+    if print_solution:
+        print(f'X = {X % M} + {M}K, k ∈ Z')
+
+    return X % M, M
 
 
 if __name__ == '__main__':
@@ -103,4 +106,5 @@ if __name__ == '__main__':
 
     if argParser.solution:
         print_equation(argParser.equation[0])
-    print(f'X={getAnswerFromString(argParser.equation[0], argParser.solution)}')
+    answ = getAnswerFromString(argParser.equation[0], argParser.solution)
+    print(f'X={answ[0]} + {answ[1]}K, k ∈ z')

@@ -1,7 +1,4 @@
-if __name__ == 'main':
-    from canonic_view import getPrimeFactorsList
-else:
-    from utils.canonic_view import prime_factors_list
+from canonic_view import prime_factors_list
 import argparse
 
 
@@ -18,10 +15,10 @@ def getParser():
     parser = argparse.ArgumentParser(description='''
     About script:
     =========================================
-    Math foundations of cryptology. Script #3.
-    Get euler decomposition.
+    Math foundations of cryptology. Задание #5.
+    Расчет функции Эйлера для m
 
-    Simple: 
+    Пример: 
         42= 2^1 * 3^1 * 7^1''', formatter_class=argparse.RawDescriptionHelpFormatter)
 
     parser.add_argument('number', type=validate, nargs=1, help='- integer digit')

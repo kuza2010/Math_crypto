@@ -1,7 +1,7 @@
 import argparse
-from utils import euler
-from utils import nod
-from utils import canonic_view
+import euler
+import nod
+import canonic_view
 import itertools
 
 
@@ -16,7 +16,7 @@ def get_parser():
     parser = argparse.ArgumentParser(description='''
     About script:
     =========================================
-    Math foundations of cryptology. Script #10.
+    Math foundations of cryptology. Задание #10.
     Нахождение первообразного корня (образующего элемента) и формирование с его
     помощью приведенной системы вычетов 
 

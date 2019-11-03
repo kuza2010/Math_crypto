@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 
+
+'''
+Задание 3. Поиск простых чисел до числа n
+'''
+
 MAX_PRIMARY = 99999
 MIN_PRIMARY = 1
 
