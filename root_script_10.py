@@ -1,7 +1,7 @@
 import argparse
-import euler
-import nod
-import canonic_view
+import euler_script_5
+import nod_script_1_2
+import canonic_view_script_4
 import itertools
 
 
@@ -47,11 +47,11 @@ def get_all_degree(numbers: []):
 
 
 def find_root_and_system(m: int, print_solution: bool):
-    eul = euler.euler(m)[0]
-    canonic_number = canonic_view.to_list_prime(canonic_view.prime_factors_list(eul))
+    eul = euler_script_5.euler(m)[0]
+    canonic_number = canonic_view_script_4.to_list_prime(canonic_view_script_4.prime_factors_list(eul))
     if print_solution:
         print(f'Euler: φ({m}) = {eul}')
-        print(f'Canon view: {eul} = {canonic_view.pretty_str(canonic_view.prime_factors_list(eul))}')
+        print(f'Canon view: {eul} = {canonic_view_script_4.pretty_str(canonic_view_script_4.prime_factors_list(eul))}')
 
     a = 2
     while a < eul:
@@ -63,8 +63,8 @@ def find_root_and_system(m: int, print_solution: bool):
                     isRoot = False
             else:
                 break
-        if isRoot and nod.get_nod(a, m) == 1:
-            system = get_system(a, canonic_view.get_all_prime(m), m)
+        if isRoot and nod_script_1_2.get_nod(a, m) == 1:
+            system = get_system(a, canonic_view_script_4.get_all_prime(m), m)
             return a, system
         a += 1
     return -1, []

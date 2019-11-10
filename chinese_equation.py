@@ -1,4 +1,4 @@
-import inverse_element
+import inverse_element_script_6
 
 
 class ChineseEquation:
@@ -48,7 +48,7 @@ class ChineseEquation:
         self.find_self_y(print_solution)
 
     def find_self_y(self, print_solution: bool = False):
-        self.__y = inverse_element.get_inverse_of(self.m, self.M)
+        self.__y = inverse_element_script_6.get_inverse_of(self.m, self.M)
         if print_solution:
             print(f'set y = {self.y}')
 

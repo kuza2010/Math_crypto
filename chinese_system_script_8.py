@@ -1,6 +1,6 @@
 import argparse
 import re
-import nod
+import nod_script_1_2
 from chinese_equation import ChineseEquation
 
 equationPattern = r'x=[1-9][0-9]*\(mod[1-9][0-9]*\)'
@@ -65,7 +65,7 @@ def get_params(equation_str: str):
 
     # validate nod
     for i in range(len(equations) - 1):
-        nod_m1_m2 = nod.get_nod(equations[i].m, equations[i + 1].m)
+        nod_m1_m2 = nod_script_1_2.get_nod(equations[i].m, equations[i + 1].m)
         if nod_m1_m2 != 1:
             raise RuntimeError(f'Ooops... Equation has no solution because nod('
                                f'{equations[i].m},{equations[i + 1].m}) = {nod_m1_m2}.')

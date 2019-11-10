@@ -1,4 +1,4 @@
-from canonic_view import prime_factors_list
+from canonic_view_script_4 import prime_factors_list
 import argparse
 
 

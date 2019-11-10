@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 from enum import Enum
 from functools import reduce
-from vilson import isPrimary
-from nod import get_nod
+from vilson_script_3 import isPrimary
+from nod_script_1_2 import get_nod
 
 import argparse
-import euler
-import canonic_view
+import euler_script_5
+import canonic_view_script_4
 
 """
 Порядок элемента в группе.
@@ -60,8 +60,8 @@ def find_elem_order(basis: int, op_type: OperationType, print_solution: bool) ->
 
 
 def order_multiple_group(m: int):
-    eul = euler.euler(m)[0]
-    canon = canonic_view.prime_factors_list(eul)
+    eul = euler_script_5.euler(m)[0]
+    canon = canonic_view_script_4.prime_factors_list(eul)
     elem_basis = []
 
     # find order for each elem
@@ -75,7 +75,7 @@ def order_multiple_group(m: int):
                     ri.append(prime_elem ** (w - wi))
                     break
 
-        elem_basis.append(f'ord{a}:={reduce(lambda x, y: x * y, ri)}')
+        elem_basis.append(f'ord({a}):={reduce(lambda x, y: x * y, ri)}')
 
     return elem_basis
 
@@ -84,15 +84,15 @@ def order_addition_group(m: int):
     elem_basis = []
 
     if isPrimary(m):
-        return list(map(lambda a: f'ord{a}={m}', range(m)))
+        return list(map(lambda a: f'ord({a})={m}', range(1, m + 1)))
 
-    for a in range(m):
+    for a in range(1, m + 1):
         if get_nod(a, m) == 1:
-            elem_basis.append(f'ord{a}={m}')
+            elem_basis.append(f'ord({a})={m}')
         else:
             for k in range(1, m):
                 if a * k % m == 0:
-                    elem_basis.append(f'ord{a}={k}')
+                    elem_basis.append(f'ord({a})={k}')
                     break
 
     return elem_basis
@@ -101,4 +101,4 @@ def order_addition_group(m: int):
 if __name__ == '__main__':
     args = create_parser()
     orders = find_elem_order(args.basis, args.operation, args.solution)
-    print(orders)
+    print("\n".join(orders))

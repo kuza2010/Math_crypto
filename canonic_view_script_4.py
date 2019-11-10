@@ -1,5 +1,5 @@
 import argparse
-import vilson
+import vilson_script_3
 from collections import Counter
 
 
@@ -53,10 +53,10 @@ def prime_factors_list(n):
 
 
 def get_all_prime(m: int):
-    if vilson.isPrimary(m):
+    if vilson_script_3.isPrimary(m):
         return range(m)
     else:
-        return vilson.get_all_primary(m, True)
+        return vilson_script_3.get_all_primary(m, True)
 
 
 def pretty_str(prim: dict):

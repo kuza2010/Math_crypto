@@ -1,7 +1,7 @@
 import argparse
 import re
-import canonic_view
-import chinese_system
+import canonic_view_script_4
+import chinese_system_script_8
 
 '''
 Задание #9. Нахождение вычета a^k(mod m) для простого и составного m
@@ -51,7 +51,7 @@ def find_deduction(equation: str, print_solution: bool):
     k = params[1]
     p = params[2]
 
-    primes = canonic_view.prime_factors_list(p)
+    primes = canonic_view_script_4.prime_factors_list(p)
     system = []
 
     for prime in primes.keys():
@@ -64,7 +64,7 @@ def find_deduction(equation: str, print_solution: bool):
         if print_solution:
             print('[' + eq_template_final.format(tmp_a, prime))
 
-    return chinese_system.getAnswerFromString(';'.join(system), print_solution)
+    return chinese_system_script_8.getAnswerFromString(';'.join(system), print_solution)
 
 
 if __name__ == '__main__':

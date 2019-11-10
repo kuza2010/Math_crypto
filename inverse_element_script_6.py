@@ -1,5 +1,5 @@
 from subtract_class import getSubtractClassFor
-from euler import euler
+from euler_script_5 import euler
 
 '''
 Задание 6. Нахождение обратного элемента в Zm
@@ -62,6 +62,9 @@ def get_inverse_of(m: int, a: int):
     if a > m:
         a = a % m
 
+    if a == 0:
+        raise ValueError(f'Can not find inverse element for {a} by m = {m}')
+
     # SKIP 1?
     for each in subtract:
         if a == each:
@@ -71,10 +74,6 @@ def get_inverse_of(m: int, a: int):
 
 
 if __name__ == '__main__':
-    print(f'U(7):\n{("".join(getPrettyStr(getAllInverseOf(7))))}')
-    print(f'U(9):\n{("".join(getPrettyStr(getAllInverseOf(9))))}')
-    print(f'U(5):\n{("".join(getPrettyStr(getAllInverseOf(5))))}')
-    print(f'U(5):\n{("".join(getPrettyStr(getInverseOf(5, 3))))}')
-    print(f'U(5):\n{("".join(getPrettyStr(getInverseOf(5, 2))))}')
-    print(f'U(7):\n{("".join(getPrettyStr(getInverseOf(7, 143))))}')
-    print(f'{get_inverse_of(13, -1)}')
+    print(get_inverse_of(11, 5))
+    print(get_inverse_of(11, 3))
+    print(get_inverse_of(5, 5))

@@ -1,6 +1,6 @@
 import argparse
-import canonic_view
-import nod
+import canonic_view_script_4
+import nod_script_1_2
 
 '''
 Задание #12. Нахождение символа Лежандра и символа Якоби
@@ -82,10 +82,10 @@ def calculateLegendre(a, p):
 def calculateJacobi(a, m):
     if m % 2 == 0:
         raise ArithmeticError(f'input: {m} is even number!')
-    if nod.get_nod(a, m) != 1:
-        raise ArithmeticError(f'nod({a},{m})={nod.get_nod(a, m)}')
+    if nod_script_1_2.get_nod(a, m) != 1:
+        raise ArithmeticError(f'nod({a},{m})={nod_script_1_2.get_nod(a, m)}')
 
-    canonic = list(canonic_view.prime_factors_list(m).keys())
+    canonic = list(canonic_view_script_4.prime_factors_list(m).keys())
     legendre = [calculateLegendre(a, each) for each in canonic]
     res = 1
     for each in legendre:

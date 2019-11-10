@@ -1,7 +1,7 @@
 import argparse
 import re
-import nod
-import inverse_element
+import nod_script_1_2
+import inverse_element_script_6
 
 # TODO: Regexp really funny!
 equationPattern = r'[1-9][0-9]*x=-?[1-9][0-9]*\(mod[1-9][0-9]*\)'
@@ -83,10 +83,10 @@ def compresParam(a, b, m, printSolution: bool):
     if abs(b) > m:
         b = int(b % m)
 
-    if nod.get_nod(m, a) == nod.get_nod(m, b):
-        tmp_m = int(m / nod.get_nod(m, a))
-        a = int(a / nod.get_nod(m, a))
-        b = int(b / nod.get_nod(m, b))
+    if nod_script_1_2.get_nod(m, a) == nod_script_1_2.get_nod(m, b):
+        tmp_m = int(m / nod_script_1_2.get_nod(m, a))
+        a = int(a / nod_script_1_2.get_nod(m, a))
+        b = int(b / nod_script_1_2.get_nod(m, b))
         m = tmp_m
 
     if printSolution:
@@ -96,8 +96,8 @@ def compresParam(a, b, m, printSolution: bool):
 
 
 def getX(a, b, m, printSolution: bool):
-    one = inverse_element.getInverseOf(m, a)
-    two = inverse_element.getInverseOf(m, b)
+    one = inverse_element_script_6.getInverseOf(m, a)
+    two = inverse_element_script_6.getInverseOf(m, b)
     print(one, two)
     if printSolution:
         print(f'x={one[a] * two[b]}mod({m})')
@@ -159,7 +159,7 @@ def getAnswerForNoPrime(params: [], printSolution: bool):
 
 
 def isPrimeNumber(numOne, numTwo, printSolution: bool = False):
-    nod_am = nod.get_nod(numOne, numTwo)
+    nod_am = nod_script_1_2.get_nod(numOne, numTwo)
     if printSolution:
         print(f'nod({numOne},{numTwo}) = {nod_am}')
     return nod_am == 1
